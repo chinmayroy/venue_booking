@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <record id="venue_booking_extentions" model="website.menu">
+            <field name="name">Booking</field>
+            <field name="url">/booking</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence">61</field>
+        </record>
+
+        <template id="booking_template_view" name="Get Booking">
+            <t t-call="website.layout">
+                <section class="s_title parallax s_parallax_is_fixed bg-black-50 pt24 pb24" data-vcss="001"
+                         data-snippet="s_title" data-scroll-background-ratio="1">
+                    <span class="s_parallax_bg oe_img_bg"
+                          style="background-image: url('/web/image/website.s_banner_default_image'); background-position: 50% 0;"/>
+                    <div class="o_we_bg_filter bg-black-50"/>
+                    <div class="container">
+                        <h1>Venue Booking Form</h1>
+                    </div>
+                </section>
+                <div id="wrap" class="oe_structure oe_empty container px-0">
+                    <form action="/thank_you_message" method="POST" enctype="multipart/form-data" style="margin:50px 0px;">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <div class="form-group">
+                            <label for="name">Name*</label>
+                            <input type="text" class="form-control" name="name"
+                                   placeholder="Enter Your Full Name" required=""/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address*</label>
+                            <input type="text" class="form-control" name="email"
+                                   placeholder="Enter Your Email Address" required=""/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact">Contact Number*</label>
+                            <input type="text" class="form-control" name="contact"
+                                   placeholder="Enter Contact Number" required=""/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="program">Program Name*</label>
+                            <input type="text" class="form-control" name="program"
+                                   placeholder="Enter Program Name" required=""/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="start_date">Start Date*</label>
+                            <input type="date" class="form-control" name="start_date" required=""/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="end_date">End Date*</label>
+                            <input type="date" class="form-control" name="end_date" required=""/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="details">More Details</label>
+                            <input type="textarea" class="form-control" name="details"
+                                   placeholder="Type More Details"/>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </t>
+        </template>
+
+
+        <template id="successful_message" name="Successful Message">
+            <div class="content">
+                <t t-call="website.layout">
+                    <div id="wrap" class="oe_structure oe_empty" style="margin-top: 50px; margin-bottom: 50px;">
+                        <section>
+                            <div class="container">
+                                <div class="row" style="margin-top: 20px;">
+                                    <div class="col-md-12">
+                                        <h2 class="text-center" style="font-weight: bold;">Thank You.</h2>
+                                        <h3 class="text-muted text-center">Your information is successfully submitted.
+                                        </h3>
+                                        <p class="text-center">We will inform you shortly.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </t>
+            </div>
+        </template>
+    </data>
+</odoo>
