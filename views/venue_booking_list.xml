@@ -89,7 +89,7 @@
                         <group>
                             <group>
                                 <field name="email"/>
-                                <field name="contact"/>
+                                <field name="phone"/>
                                 <field name="program"/>
                             </group>
                             <group>

@@ -12,63 +12,195 @@
 
         <template id="booking_template_view" name="Get Booking">
             <t t-call="website.layout">
-                <section class="s_title parallax s_parallax_is_fixed bg-black-50 pt24 pb24" data-vcss="001"
-                         data-snippet="s_title" data-scroll-background-ratio="1">
-                    <span class="s_parallax_bg oe_img_bg"
-                          style="background-image: url('/web/image/website.s_banner_default_image'); background-position: 50% 0;"/>
-                    <div class="o_we_bg_filter bg-black-50"/>
-                    <div class="container">
-                        <h1>Venue Booking Form</h1>
-                    </div>
-                </section>
-                <div id="wrap" class="oe_structure oe_empty container px-0">
-                    <form action="/thank_you_message" method="POST" enctype="multipart/form-data" style="margin:50px 0px;">
-                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-                        <div class="form-group">
-                            <label for="name">Name*</label>
-                            <input type="text" class="form-control" name="name"
-                                   placeholder="Enter Your Full Name" required=""/>
+                <t t-set="logged_partner"
+                   t-value="request.env['website.visitor']._get_visitor_from_request().partner_id"/>
+                <t t-set="contactus_form_values" t-value="{
+                'name': request.params.get('name', ''),
+                'phone': request.params.get('phone', ''),
+                'email': request.params.get('email_from', ''),
+            }"/>
+                <span class="hidden" data-for="contactus_form" t-att-data-values="contactus_form_values"/>
+                <div id="wrap" class="oe_structure oe_empty">
+                    <section class="s_title parallax s_parallax_is_fixed bg-black-50 pt24 pb24" data-vcss="001"
+                             data-snippet="s_title" data-scroll-background-ratio="1">
+                        <span class="s_parallax_bg oe_img_bg"
+                              style="background-image: url('/web/image/website.s_banner_default_image'); background-position: 50% 0;"/>
+                        <div class="o_we_bg_filter bg-black-50"/>
+                        <div class="container">
+                            <h1>Venue Booking Form</h1>
                         </div>
+                    </section>
+                    <section class="s_text_block pt40 pb40 o_colored_level " data-snippet="s_text_block">
+                        <div class="container s_allow_columns">
+                            <div class="row">
+                                <div class="col-lg-8 mt-4 mt-lg-0">
+                                    <p>
+                                        Please fill-up this form with your correct information.
+                                        Otherwise, we can't take any proper action.
+                                    </p>
+                                    <section class="s_website_form" data-vcss="001" data-snippet="s_website_form">
+                                        <div class="container">
+                                            <form id="contactus_form" action="/thank_you_message" method="post"
+                                                  enctype="multipart/form-data" class="o_mark_required" data-mark="*"
+                                                  data-model_name="mail.mail" data-success-mode="redirect"
+                                                  data-success-page="/thank_you_message" data-pre-fill="true">
+                                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                                <div class="s_website_form_rows row s_col_no_bgcolor">
+                                                    <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required"
+                                                         data-type="char" data-name="Field">
+                                                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                            <label class="col-form-label col-sm-auto s_website_form_label"
+                                                                   style="width: 200px" for="vb1">
+                                                                <span class="s_website_form_label_content">Your Name
+                                                                </span>
+                                                                <span class="s_website_form_mark">*</span>
+                                                            </label>
+                                                            <div class="col-sm">
+                                                                <input id="vb1" type="text"
+                                                                       class="form-control s_website_form_input"
+                                                                       name="name" required="" data-fill-with="name"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-                        <div class="form-group">
-                            <label for="email">Email Address*</label>
-                            <input type="text" class="form-control" name="email"
-                                   placeholder="Enter Your Email Address" required=""/>
-                        </div>
+                                                    <div class="form-group col-12 s_website_form_field s_website_form_required"
+                                                         data-type="email" data-name="Field">
+                                                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                            <label class="col-form-label col-sm-auto s_website_form_label"
+                                                                   style="width: 200px" for="vb2">
+                                                                <span class="s_website_form_label_content">Your Email
+                                                                </span>
+                                                                <span class="s_website_form_mark">*</span>
+                                                            </label>
+                                                            <div class="col-sm">
+                                                                <input id="vb2" type="email"
+                                                                       class="form-control s_website_form_input"
+                                                                       name="email" required=""
+                                                                       data-fill-with="email"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-                        <div class="form-group">
-                            <label for="contact">Contact Number*</label>
-                            <input type="text" class="form-control" name="contact"
-                                   placeholder="Enter Contact Number" required=""/>
-                        </div>
+                                                    <div class="form-group col-12 s_website_form_field s_website_form_custom"
+                                                         data-type="char" data-name="Field">
+                                                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                            <label class="col-form-label col-sm-auto s_website_form_label"
+                                                                   style="width: 200px" for="vb3">
+                                                                <span class="s_website_form_label_content">Phone
+                                                                    Number
+                                                                </span>
+                                                                <span class="s_website_form_mark">*</span>
+                                                            </label>
+                                                            <div class="col-sm">
+                                                                <input id="vb3" type="tel"
+                                                                       class="form-control s_website_form_input"
+                                                                       name="phone" data-fill-with="phone" required=""/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-                        <div class="form-group">
-                            <label for="program">Program Name*</label>
-                            <input type="text" class="form-control" name="program"
-                                   placeholder="Enter Program Name" required=""/>
-                        </div>
+                                                    <div class="form-group col-12 s_website_form_field s_website_form_required"
+                                                         data-type="char" data-name="Field">
+                                                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                            <label class="col-form-label col-sm-auto s_website_form_label"
+                                                                   style="width: 200px" for="vb4">
+                                                                <span class="s_website_form_label_content">Program Name
+                                                                </span>
+                                                                <span class="s_website_form_mark">*</span>
+                                                            </label>
+                                                            <div class="col-sm">
+                                                                <input id="vb4" type="text"
+                                                                       class="form-control s_website_form_input"
+                                                                       name="program" required=""/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-                        <div class="form-group">
-                            <label for="start_date">Start Date*</label>
-                            <input type="date" class="form-control" name="start_date" required=""/>
-                        </div>
 
-                        <div class="form-group">
-                            <label for="end_date">End Date*</label>
-                            <input type="date" class="form-control" name="end_date" required=""/>
-                        </div>
+                                                    <div class="form-group col-12 s_website_form_field s_website_form_required"
+                                                         data-type="char" data-name="Field">
+                                                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                            <label class="col-form-label col-sm-auto s_website_form_label"
+                                                                   style="width: 200px" for="vb5">
+                                                                <span class="s_website_form_label_content">Start Date
+                                                                </span>
+                                                                <span class="s_website_form_mark">*</span>
+                                                            </label>
+                                                            <div class="col-sm">
+                                                                <input id="vb5" type="date"
+                                                                       class="form-control s_website_form_input"
+                                                                       name="start_date" required=""/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-                        <div class="form-group">
-                            <label for="details">More Details</label>
-                            <input type="textarea" class="form-control" name="details"
-                                   placeholder="Type More Details"/>
+                                                    <div class="form-group col-12 s_website_form_field s_website_form_required"
+                                                         data-type="char" data-name="Field">
+                                                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                            <label class="col-form-label col-sm-auto s_website_form_label"
+                                                                   style="width: 200px" for="vb6">
+                                                                <span class="s_website_form_label_content">End Date
+                                                                </span>
+                                                                <span class="s_website_form_mark">*</span>
+                                                            </label>
+                                                            <div class="col-sm">
+                                                                <input id="vb6" type="date"
+                                                                       class="form-control s_website_form_input"
+                                                                       name="end_date" required=""/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required"
+                                                         data-type="text" data-name="Field">
+                                                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                            <label class="col-form-label col-sm-auto s_website_form_label"
+                                                                   style="width: 200px" for="vb7">
+                                                                <span class="s_website_form_label_content">More
+                                                                    Details
+                                                                </span>
+                                                            </label>
+                                                            <div class="col-sm">
+                                                                <textarea id="vb7"
+                                                                          class="form-control s_website_form_input"
+                                                                          name="details"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group col-12 s_website_form_submit"
+                                                         data-name="Submit Button">
+                                                        <div style="width: 200px;" class="s_website_form_label"/>
+                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </section>
+                                </div>
+                                <div class="col-lg-4 mt-4 mt-lg-0">
+                                    <ul class="list-unstyled mb-0 pl-2">
+                                        <li>Emergency Help</li>
+                                        <li>
+                                            <i class="fa fa-map-marker fa-fw mr-2"/>
+                                            <span class="o_force_ltr">Sukrabad, Dhanmondi, Dhaka-1205</span>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-phone fa-fw mr-2"/>
+                                            <span class="o_force_ltr">+8801571156707</span>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-1x fa-fw fa-envelope mr-2"/>
+                                            <span>info@venuebooking.com</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                    </section>
                 </div>
             </t>
         </template>
-
 
         <template id="successful_message" name="Successful Message">
             <div class="content">

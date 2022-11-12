@@ -17,4 +17,5 @@ class VenueBooking(http.Controller):
         values = {
             'new_booking': new_booking,
         }
+        print(values)
         return request.render("venue_booking.successful_message", values)

@@ -8,7 +8,7 @@ class VenueBookingList(models.Model):
 
     name = fields.Char(string="Customer Name")
     email = fields.Char(string="Email")
-    contact = fields.Char(string="Contact Number")
+    phone = fields.Char(string="Phone Number")
     program = fields.Char(string="Program Name")
     start_date = fields.Date(string="Start Date")
     end_date = fields.Date(string="End Date")
