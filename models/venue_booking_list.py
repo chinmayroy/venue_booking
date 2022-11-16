@@ -14,6 +14,13 @@ class VenueBookingList(models.Model):
     end_date = fields.Date(string="End Date")
     details = fields.Text(string="More Details")
 
+    active = fields.Boolean(string="Active", default=True)
+
+    _sql_constraints = [
+        ('unique_date', 'unique(start_date, end_date)',
+         'This date {} - {} already booked by someone!\nPlease select another date.'.format(start_date, end_date))
+    ]
+
     def action_send_email(self):
         template = self.env.ref('venue_booking.venue_booking_email_template')
         for rec in self:

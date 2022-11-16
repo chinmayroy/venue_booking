@@ -2,12 +2,9 @@
 {
     'name': "Venue Booking",
 
-    'summary': """
-        71 Milonayoton Venue Booking System""",
+    'summary': """71 Milonayoton Venue Booking System""",
 
-    'description': """
-        This software is created for 71 Milonayoton Venue Booking System.
-    """,
+    'description': """This software is created for 71 Milonayoton Venue Booking System.""",
 
     'author': "Chinmay Roy",
     'website': "http://www.chinmayroy.com",
@@ -16,7 +13,7 @@
     # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Tools',
-    'version': '15.0.1.0.0',
+    'version': '15.0.1',
     'sequence': 1,
 
     # any module necessary for this one to work correctly
@@ -25,6 +22,8 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'security/security.xml',
+        'security/rules.xml',
 
         'data/venue_booking_email_template.xml',
         'views/venue_booking_list.xml',

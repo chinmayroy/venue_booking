@@ -1,3 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 access_venue_booking_list,venue.booking.list,model_venue_booking_list,base.group_user,1,1,1,1
+access_venue_booking_list_for_user,venue.booking.list,model_venue_booking_list,venue_booking.venue_booking_user,1,1,0,0
+access_venue_booking_list_for_asst_manager,venue.booking.list,model_venue_booking_list,venue_booking.venue_booking_asst_manager,1,1,1,0
+access_venue_booking_list_for_manager,venue.booking.list,model_venue_booking_list,venue_booking.venue_booking_manager,1,1,1,1

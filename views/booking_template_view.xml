@@ -94,6 +94,7 @@
                                                             <div class="col-sm">
                                                                 <input id="vb3" type="tel"
                                                                        class="form-control s_website_form_input"
+                                                                       placeholder="e.g. +8801583738283"
                                                                        name="phone" data-fill-with="phone" required=""/>
                                                             </div>
                                                         </div>
@@ -111,6 +112,7 @@
                                                             <div class="col-sm">
                                                                 <input id="vb4" type="text"
                                                                        class="form-control s_website_form_input"
+                                                                       placeholder="e.g. Live Talk Show"
                                                                        name="program" required=""/>
                                                             </div>
                                                         </div>
@@ -180,7 +182,7 @@
                                 </div>
                                 <div class="col-lg-4 mt-4 mt-lg-0">
                                     <ul class="list-unstyled mb-0 pl-2">
-                                        <li>Emergency Help</li>
+                                        <li><h3>Emergency Helpline</h3></li>
                                         <li>
                                             <i class="fa fa-map-marker fa-fw mr-2"/>
                                             <span class="o_force_ltr">Sukrabad, Dhanmondi, Dhaka-1205</span>
