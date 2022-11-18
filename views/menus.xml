@@ -5,17 +5,40 @@
         <menuitem name="Venue Booking" id="venue_booking.menu_root"/>
 
         <!-- Main Menus -->
-        <menuitem name="Booking List"
-                  id="venue_booking.booking_list"
+        <menuitem name="Booked"
+                  id="venue_booking.booked_list"
                   parent="venue_booking.menu_root"
-                  action="venue_booking.action_venue_booking_list"/>
+                  action="venue_booking.action_venue_booked_list"/>
 
-        <!-- Sub Menus -->
-        <!--
-            <menuitem name="List" id="venue_booking.menu_1_list" parent="venue_booking.menu_1"
-                      action="venue_booking.action_window"/>
-            <menuitem name="Server to list" id="venue_booking" parent="venue_booking.menu_2"
-                      action="venue_booking.action_server"/>
-        -->
+        <menuitem name="Employees"
+                  id="venue_booking.employee_list"
+                  parent="venue_booking.menu_root"/>
+
+        <menuitem name="Venue Related" id="venue_booking.venue_related"
+                  parent="venue_booking.menu_root"/>
+
+
+        <!-- Sub Menus for Employees -->
+        <menuitem name="Employee Information" id="venue_booking.employee_information"
+                  parent="venue_booking.employee_list"
+                  action="venue_booking.action_employee_information"/>
+
+        <menuitem name="Team Information" id="venue_booking.team_information"
+                  parent="venue_booking.employee_list"
+                  action="venue_booking.action_venue_booking_team"/>
+
+        <!-- Sub Menus for Venues -->
+        <menuitem name="Venue List" id="venue_booking.venue_list"
+                  parent="venue_booking.venue_related"
+                  action="venue_booking.action_venue_list"/>
+
+        <menuitem name="Venue Slots" id="venue_booking.venue_slots"
+                  parent="venue_booking.venue_related"
+                  action="venue_booking.action_venue_slot_list"/>
+
+<!--        <menuitem name="Facilities" id="venue_booking.facilities"-->
+<!--                  parent="venue_booking.venue_related"-->
+<!--                  action="venue_booking.action_venue_facilities"/>-->
+
     </data>
 </odoo>

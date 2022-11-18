@@ -2,11 +2,11 @@
     <data>
 
         <!-- Search View -->
-        <record id="venue_booking_list_search_view" model="ir.ui.view">
-            <field name="name">venue.booking.list.view</field>
-            <field name="model">venue.booking.list</field>
+        <record id="venue_booked_list_search_view" model="ir.ui.view">
+            <field name="name">venue.booked.list.view</field>
+            <field name="model">venue.booked.list</field>
             <field name="arch" type="xml">
-                <search string="Booking List">
+                <search string="Booked List">
                     <field name="name" string="Name" filter_domain="[('name','ilike',self)]"/>
                     <separator/>
                     <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
@@ -16,11 +16,11 @@
 
 
         <!-- Kanban View -->
-        <record id="venue_booking_list_kanban_view" model="ir.ui.view">
-            <field name="name">venue.booking.list.kanban</field>
-            <field name="model">venue.booking.list</field>
+        <record id="venue_booked_list_kanban_view" model="ir.ui.view">
+            <field name="name">venue.booked.list.kanban</field>
+            <field name="model">venue.booked.list</field>
             <field name="arch" type="xml">
-                <kanban class="o_kanban" string="Booking List">
+                <kanban class="o_kanban" string="Booked List">
                     <field name="name"/>
                     <templates>
                         <t t-name="kanban-box">
@@ -36,10 +36,8 @@
                                             </p>
                                         </li>
                                         <li>
-                                            <p>Start Date:
-                                                <field name="start_date"/>
-                                                End Date:
-                                                <field name="end_date"/>
+                                            <p>Slot:
+                                                <field name="slot"/>
                                             </p>
                                         </li>
                                     </ul>
@@ -53,32 +51,33 @@
 
 
         <!-- Tree View -->
-        <record id="venue_booking_list_tree_view" model="ir.ui.view">
-            <field name="name">venue.booking.list.tree.view</field>
-            <field name="model">venue.booking.list</field>
+        <record id="venue_booked_list_tree_view" model="ir.ui.view">
+            <field name="name">venue.booked.list.tree.view</field>
+            <field name="model">venue.booked.list</field>
             <field name="priority" eval="7"/>
             <field name="arch" type="xml">
-                <tree string="Booking List">
+                <tree string="Booked List">
                     <field name="name"/>
                     <field name="program"/>
-                    <field name="start_date"/>
-                    <field name="end_date"/>
+                    <field name="slot"/>
                 </tree>
             </field>
         </record>
 
 
         <!-- Form View -->
-        <record id="venue_booking_list_form_view" model="ir.ui.view">
-            <field name="name">venue.booking.list.form.view</field>
-            <field name="model">venue.booking.list</field>
+        <record id="venue_booked_list_form_view" model="ir.ui.view">
+            <field name="name">venue.booked.list.form.view</field>
+            <field name="model">venue.booked.list</field>
             <field name="priority" eval="7"/>
             <field name="arch" type="xml">
-                <form string="Booking List">
+                <form string="Booked List">
                     <header>
-                        <button name="action_send_email" string="Send Mail" type="object" class="oe_highlight"
-                                data-hotkey="m"/>
-                        <button special="cancel" data-hotkey="c" string="Cancel"/>
+                        <button id="requirement_button" name="action_requirement" string="Requirement" type="object"
+                                class="oe_highlight" data-hotkey="r" states="draft"/>
+                        <button id="approved_button" name="action_approved" string="Approved" type="object"
+                                class="oe_highlight" data-hotkey="a" states="requirement"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,requirement,approved"/>
                     </header>
                     <sheet>
                         <group>
@@ -90,15 +89,15 @@
                             </h3>
                         </group>
                         <group>
-                            <group>
-                                <field name="email"/>
-                                <field name="phone"/>
-                                <field name="program"/>
-                            </group>
-                            <group>
-                                <field name="start_date"/>
-                                <field name="end_date"/>
-                            </group>
+                            <field name="email"/>
+                            <field name="phone"/>
+                            <field name="program"/>
+                        </group>
+                        <group>
+                            <field name="venue_name"/>
+                        </group>
+                        <group>
+                            <field name="slot"/>
                         </group>
                         <group>
                             <field name="details"/>
@@ -115,9 +114,9 @@
         </record>
 
         <!-- actions opening views on models -->
-        <record model="ir.actions.act_window" id="venue_booking.action_venue_booking_list">
-            <field name="name">Booking List</field>
-            <field name="res_model">venue.booking.list</field>
+        <record model="ir.actions.act_window" id="venue_booking.action_venue_booked_list">
+            <field name="name">Booked List</field>
+            <field name="res_model">venue.booked.list</field>
             <field name="view_mode">kanban,tree,form</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create o_view_nocontent_smiling_face">Add a new record.</p>

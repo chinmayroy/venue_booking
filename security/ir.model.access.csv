@@ -1,6 +1,13 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
-access_venue_booking_list,venue.booking.list,model_venue_booking_list,base.group_user,1,1,1,1
-access_venue_booking_list_for_user,venue.booking.list,model_venue_booking_list,venue_booking.venue_booking_user,1,1,0,0
-access_venue_booking_list_for_asst_manager,venue.booking.list,model_venue_booking_list,venue_booking.venue_booking_asst_manager,1,1,1,0
-access_venue_booking_list_for_manager,venue.booking.list,model_venue_booking_list,venue_booking.venue_booking_manager,1,1,1,1
+access_venue_booked_list,venue.booked.list,model_venue_booked_list,base.group_user,1,1,1,1
+access_venue_list,venue.list,model_venue_list,base.group_user,1,1,1,1
+access_employee_information,employee.information,model_employee_information,base.group_user,1,1,1,1
+access_venue_booking_team,venue.booking.team,model_venue_booking_team,base.group_user,1,1,1,1
+access_venue_slot_list,venue.slot.list,model_venue_slot_list,base.group_user,1,1,1,1
+access_venue_facilities,venue.facilities,model_venue_facilities,base.group_user,1,1,1,1
+access_payment_status,payment.status,model_payment_status,base.group_user,1,1,1,1
+
+access_venue_booked_list_for_user,venue.booked.list,model_venue_booked_list,venue_booking.venue_booking_user,1,1,0,0
+access_venue_booked_list_for_asst_manager,venue.booked.list,model_venue_booked_list,venue_booking.venue_booking_asst_manager,1,1,1,0
+access_venue_booked_list_for_manager,venue.booked.list,model_venue_booked_list,venue_booking.venue_booking_manager,1,1,1,1

@@ -2,12 +2,12 @@
 {
     'name': "Venue Booking",
 
-    'summary': """71 Milonayoton Venue Booking System""",
+    'summary': """Venue Booking System""",
 
     'description': """This software is created for 71 Milonayoton Venue Booking System.""",
 
     'author': "Chinmay Roy",
-    'website': "http://www.chinmayroy.com",
+    'website': "https://www.chinmayroy.com",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
@@ -17,7 +17,7 @@
     'sequence': 1,
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'web','website', 'website_mail','mail',],
+    'depends': ['base', 'web', 'website', 'website_mail', 'mail', 'account', ],
 
     # always loaded
     'data': [
@@ -25,9 +25,16 @@
         'security/security.xml',
         'security/rules.xml',
 
-        'data/venue_booking_email_template.xml',
-        'views/venue_booking_list.xml',
-        'views/booking_template_view.xml',
+        'data/venue_booked_email_template.xml',
+        'data/venue_list_sequence.xml',
+
+        'views/venue_booked_list.xml',
+        'views/employee_information.xml',
+        'views/venue_lists.xml',
+        'views/venue_booking_team.xml',
+        'views/venue_slot_list.xml',
+        'views/venue_facilities.xml',
+        'views/booking_web_template_view.xml',
         'views/menus.xml',
     ],
 

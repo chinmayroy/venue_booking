@@ -1,7 +1,7 @@
 <odoo>
     <record id="venue_booking_user_rule" model="ir.rule">
         <field name="name">Venue Booking User Rule</field>
-        <field name="model_id" ref="venue_booking.model_venue_booking_list"/>
+        <field name="model_id" ref="venue_booking.model_venue_booked_list"/>
         <field name="domain_force">[('user_id', '=', user.id)]</field>
         <field name="groups" eval="[(4, ref('venue_booking.venue_booking_user'))]"/>
         <field name="perm_read" eval="True"/>
@@ -11,7 +11,7 @@
     </record>
     <record id="venue_booking_asst_manager_rule" model="ir.rule">
         <field name="name">Venue Booking Asst Manager Rule</field>
-        <field name="model_id" ref="venue_booking.model_venue_booking_list"/>
+        <field name="model_id" ref="venue_booking.model_venue_booked_list"/>
         <field name="domain_force">[(1, '=', 1)]</field>
         <field name="groups" eval="[(4, ref('venue_booking.venue_booking_asst_manager'))]"/>
         <field name="perm_read" eval="True"/>
@@ -21,7 +21,7 @@
     </record>
         <record id="venue_booking_manager_rule" model="ir.rule">
         <field name="name">Venue Booking Manager Rule</field>
-        <field name="model_id" ref="venue_booking.model_venue_booking_list"/>
+        <field name="model_id" ref="venue_booking.model_venue_booked_list"/>
         <field name="domain_force">[(1, '=', 1)]</field>
         <field name="groups" eval="[(4, ref('venue_booking.venue_booking_manager'))]"/>
         <field name="perm_read" eval="True"/>

@@ -1,0 +1,109 @@
+<odoo>
+    <data>
+
+        <!-- Search View -->
+        <record id="venue_list_search_view" model="ir.ui.view">
+            <field name="name">venue.list.view</field>
+            <field name="model">venue.list</field>
+            <field name="arch" type="xml">
+                <search string="Venue List">
+                    <field name="name" string="Venue Name" filter_domain="[('name','ilike',self)]"/>
+                    <separator/>
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                </search>
+            </field>
+        </record>
+
+
+        <!-- Kanban View -->
+        <record id="venue_list_kanban_view" model="ir.ui.view">
+            <field name="name">venue.list.kanban</field>
+            <field name="model">venue.list</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban" string="Booking List">
+                    <field name="name"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_content oe_kanban_global_click">
+                                <div class="oe_kanban_details">
+                                    <strong class="o_kanban_record_title">
+                                        <field name="name"/>
+                                    </strong>
+                                    <ul>
+                                        <li>
+                                            <p>Team Name:
+                                                <field name="team_name"/>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
+        <!-- Tree View -->
+        <record id="venue_list_tree_view" model="ir.ui.view">
+            <field name="name">venue.list.tree.view</field>
+            <field name="model">venue.list</field>
+            <field name="priority" eval="7"/>
+            <field name="arch" type="xml">
+                <tree string="Venue List">
+                    <field name="name"/>
+                    <field name="team_name"/>
+                    <field name="facilities"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!-- Form View -->
+        <record id="venue_list_form_view" model="ir.ui.view">
+            <field name="name">venue.list.form.view</field>
+            <field name="model">venue.list</field>
+            <field name="priority" eval="7"/>
+            <field name="arch" type="xml">
+                <form string="Venue List">
+                    <sheet>
+                        <group>
+                            <h3>
+                                <field name="active" invisible="1"/>
+                                <label for="name" string="Venue Name"/>
+                                <br/>
+                                <field name="name"/>
+                            </h3>
+                        </group>
+                        <group>
+                            <field name="product_id" readonly="1"/>
+                            <field name="team_name"/>
+                        </group>
+                        <group>
+                            <field name="facilities"/>
+                        </group>
+                    </sheet>
+                    <!-- Chatter -->
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+        <record model="ir.actions.act_window" id="venue_booking.action_venue_list">
+            <field name="name">Venue List</field>
+            <field name="res_model">venue.list</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create o_view_nocontent_smiling_face">Add a new venue.</p>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>
