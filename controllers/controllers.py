@@ -1,5 +1,6 @@
 from odoo import http
 from odoo.http import request
+import datetime
 
 
 class VenueBooking(http.Controller):
@@ -17,8 +18,30 @@ class VenueBooking(http.Controller):
 
     @http.route('/booking/bill_pay', auth='user', website=True)
     def bill_pay(self):
-        
-
+        partner_id = request.env['res.users'].browse(name)
+        currency_id = request.env['account.move'].browse(currency_id)
+        p_name = request.env['product.product'].browse(name)
+        product_id = request.env['product.product'].browse(default_code)
+        price_unit = request.env['product.product'].browse(lst_price)
+        tax_ids = request.env['product.product'].browse(taxes_id)
+        today = datetime.datetime.now()
+        return request.env['account.move'].create({
+            'move_type': 'in_invoice',
+            'date': '2017-01-01',
+            'partner_id': partner_id,
+            'invoice_date': today,
+            'currency_id': currency_id,
+            'invoice_line_ids': [
+                (0, None, {
+                    'name': p_name,
+                    'product_id': product_id,
+                    'quantity': 1,
+                    'price_unit': price_unit,
+                    'tax_ids': tax_ids,
+                }),
+            ]
+        })
+        # return request.render("venue_booking.booking_bill_pay", move)
 
     @http.route('/booking/thank_you_message', auth='user', website=True)
     def thankyou(self, **kw):
