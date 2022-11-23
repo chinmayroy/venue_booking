@@ -15,7 +15,12 @@ class VenueBooking(http.Controller):
         }
         return request.render("venue_booking.booking_template_view", values)
 
-    @http.route('/thank_you_message', auth='user', website=True)
+    @http.route('/booking/bill_pay', auth='user', website=True)
+    def bill_pay(self):
+        
+
+
+    @http.route('/booking/thank_you_message', auth='user', website=True)
     def thankyou(self, **kw):
         new_booking = request.env['venue.booked.list'].sudo().create(kw)
         values = {
