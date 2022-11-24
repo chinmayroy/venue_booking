@@ -17,7 +17,7 @@
     'sequence': 1,
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'web', 'website', 'website_mail', 'mail', 'account', ],
+    'depends': ['base', 'web', 'website', 'website_mail', 'mail', 'account',],
 
     # always loaded
     'data': [
