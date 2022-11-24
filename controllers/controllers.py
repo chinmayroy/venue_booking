@@ -18,12 +18,14 @@ class VenueBooking(http.Controller):
 
     @http.route('/booking/bill_pay', auth='user', website=True)
     def bill_pay(self):
-        partner_id = request.env['res.users'].browse(name)
-        currency_id = request.env['account.move'].browse(currency_id)
-        p_name = request.env['product.product'].browse(name)
-        product_id = request.env['product.product'].browse(default_code)
-        price_unit = request.env['product.product'].browse(lst_price)
-        tax_ids = request.env['product.product'].browse(taxes_id)
+        partner_id = request.env['res.users'].browse()
+        currency_id = request.env['account.move'].browse()
+        if not currency_id:
+            currency_id = request.env.ref['base.USD'].id
+        p_name = request.env['product.product'].browse()
+        product_id = request.env['product.product'].browse()
+        price_unit = request.env['product.product'].browse()
+        tax_ids = request.env['product.product'].browse()
         today = datetime.datetime.now()
         return request.env['account.move'].create({
             'move_type': 'in_invoice',
