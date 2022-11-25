@@ -18,30 +18,23 @@ class VenueBooking(http.Controller):
 
     @http.route('/booking/bill_pay', auth='user', website=True)
     def bill_pay(self):
-        partner_id = request.env['res.users'].sudo().search([])
-        p_name = request.env['product.product'].sudo().search([])
+        partner_id = request.env['website.visitor']._get_visitor_from_request().partner_id
         product_id = request.env['venue.list'].sudo().search([])
         today = datetime.datetime.now()
         invoice = request.env['account.move'].create({
             'move_type': 'in_invoice',
             'date': '2017-01-01',
             'partner_id': partner_id,
-            'invoice_date': today,
+            'invoice_date': today.strftime('%Y-%m-%d'),
             'invoice_line_ids': [
                 (0, None, {
-                    'name': p_name,
                     'product_id': product_id,
                     'quantity': 1,
                     'price_unit': 1.0,
                 }),
             ]
         })
-        print("=================================================")
-        print(partner_id)
-        print(p_name)
-        print(product_id)
-        print(today)
-        print("=================================================")
+        print(partner_id,"\n",product_id,"\n",today)
         return invoice
         # return request.render("venue_booking.booking_bill_pay", invoice)
 
