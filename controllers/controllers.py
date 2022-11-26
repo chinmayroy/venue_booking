@@ -2,10 +2,9 @@ from odoo import http
 from odoo.http import request
 import datetime
 
-
 class VenueBooking(http.Controller):
     @http.route('/booking', auth='user', website=True)
-    def booking(self, **kw):
+    def booking(self):
         booking_list = request.env['venue.booked.list'].sudo().search([])
         venue_list = request.env['venue.list'].sudo().search([])
         slot_list = request.env['venue.slot.list'].sudo().search([])
@@ -19,8 +18,9 @@ class VenueBooking(http.Controller):
     @http.route('/booking/bill_pay', auth='user', website=True)
     def bill_pay(self):
         partner_id = request.env['website.visitor']._get_visitor_from_request().partner_id
-        product_id = request.env['venue.list'].sudo().search([])
+        product_id = request.env['venue.list'].sudo().search(['product_id', '=', product_id])
         today = datetime.datetime.now()
+
         invoice = request.env['account.move'].create({
             'move_type': 'in_invoice',
             'date': '2017-01-01',
@@ -30,13 +30,12 @@ class VenueBooking(http.Controller):
                 (0, None, {
                     'product_id': product_id,
                     'quantity': 1,
-                    'price_unit': 1.0,
+                    'price_unit': 500,
                 }),
             ]
         })
-        print(partner_id,"\n",product_id,"\n",today)
+        print(product_id)
         return invoice
-        # return request.render("venue_booking.booking_bill_pay", invoice)
 
     @http.route('/booking/thank_you_message', auth='user', website=True)
     def thankyou(self, **kw):
