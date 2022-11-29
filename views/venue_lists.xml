@@ -8,6 +8,7 @@
             <field name="arch" type="xml">
                 <search string="Venue List">
                     <field name="name" string="Venue Name" filter_domain="[('name','ilike',self)]"/>
+                    <field name="stages" string="Stage Qty" filter_domain="[('stage','ilike',self)]"/>
                     <separator/>
                     <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
                 </search>
@@ -54,7 +55,7 @@
                 <tree string="Venue List">
                     <field name="name"/>
                     <field name="team_name"/>
-                    <field name="facilities"/>
+                    <field name="foods"/>
                 </tree>
             </field>
         </record>
@@ -80,8 +81,13 @@
                             <field name="product_id"/>
                             <field name="team_name"/>
                         </group>
+                        <hr/>
+                        <h3>Facilities:</h3>
                         <group>
-                            <field name="facilities"/>
+                            <field name="chairs"/>
+                            <field name="tables"/>
+                            <field name="stages"/>
+                            <field name="foods"/>
                         </group>
                     </sheet>
                     <!-- Chatter -->

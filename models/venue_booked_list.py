@@ -17,19 +17,28 @@ class VenueBookedList(models.Model):
     active = fields.Boolean(string="Active", default=True)
     state = fields.Selection([
         ('draft', 'Draft'),
-        ('requirement', 'Requirement'),
+        ('pre_approved', 'Pre Approved'),
         ('approved', 'Approved')], default='draft', string="Status")
 
     _sql_constraints = [
         ('unique_date', 'unique(slot)',
-         'This slot {} already booked by someone!\nPlease select another slot.'.format(slot))
+         'This slot already booked by someone!\nPlease select another slot.')
     ]
 
-    def action_requirement(self):
-        self.state = 'requirement'
+    # Venue Requirement Action Button
+    def action_pre_approved(self):
+        self.state = 'pre_approved'
 
+    # Venue Approval Action Button
     def action_approved(self):
         self.state = 'approved'
-        template = self.env.ref('venue_booking.venue_booking_email_template')
+        template = self.env.ref('venue_booking.venue_book_approved_email_template')
+        for rec in self:
+            template.send_mail(rec.id, force_send=True)
+
+    # After Sending Data Mail Create Action Button
+    def create_email_receive_information(self):
+        self.state = 'draft'
+        template = self.env.ref('venue_booking.venue_book_receive_email_template')
         for rec in self:
             template.send_mail(rec.id, force_send=True)

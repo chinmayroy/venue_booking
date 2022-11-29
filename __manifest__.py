@@ -25,7 +25,8 @@
         'security/security.xml',
         'security/rules.xml',
 
-        'data/venue_booked_email_template.xml',
+        'data/venue_book_approved_email_template.xml',
+        'data/venue_book_receive_email_template.xml',
         'data/venue_list_sequence.xml',
 
         'views/venue_booked_list.xml',
@@ -33,7 +34,7 @@
         'views/venue_lists.xml',
         'views/venue_booking_team.xml',
         'views/venue_slot_list.xml',
-        'views/venue_facilities.xml',
+        'views/venue_foods.xml',
         'views/booking_web_template_view.xml',
         'views/menus.xml',
     ],

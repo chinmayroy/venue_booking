@@ -2,13 +2,12 @@
     <data>
 
         <!-- Search View -->
-        <record id="venue_facilities_search_view" model="ir.ui.view">
-            <field name="name">venue.facilities.view</field>
-            <field name="model">venue.facilities</field>
+        <record id="venue_foods_search_view" model="ir.ui.view">
+            <field name="name">venue.foods.view</field>
+            <field name="model">venue.foods</field>
             <field name="arch" type="xml">
-                <search string="Teams">
-                    <field name="food" string="Food" filter_domain="[('food','ilike',self)]"/>
-                    <field name="stage" string="Stage Qty" filter_domain="[('stage','ilike',self)]"/>
+                <search string="Foods">
+                    <field name="food_name" string="Food" filter_domain="[('food_name','ilike',self)]"/>
                     <separator/>
                     <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
                 </search>
@@ -17,18 +16,18 @@
 
 
         <!-- Kanban View -->
-        <record id="venue_facilities_kanban_view" model="ir.ui.view">
-            <field name="name">venue.facilities.kanban</field>
-            <field name="model">venue.facilities</field>
+        <record id="venue_foods_kanban_view" model="ir.ui.view">
+            <field name="name">venue.foods.kanban</field>
+            <field name="model">venue.foods</field>
             <field name="arch" type="xml">
-                <kanban class="o_kanban" string="Venue Facilities">
-                    <field name="food"/>
+                <kanban class="o_kanban" string="Venue Foods">
+                    <field name="food_name"/>
                     <templates>
                         <t t-name="kanban-box">
                             <div t-attf-class="oe_kanban_card oe_kanban_content oe_kanban_global_click">
                                 <div class="oe_kanban_details">
                                     <strong class="o_kanban_record_title">
-                                        <field name="food"/>
+                                        <field name="food_name"/>
                                     </strong>
                                 </div>
                             </div>
@@ -40,37 +39,33 @@
 
 
         <!-- Tree View -->
-        <record id="venue_facilities_tree_view" model="ir.ui.view">
-            <field name="name">venue.facilities.tree.view</field>
-            <field name="model">venue.facilities</field>
+        <record id="venue_foods_tree_view" model="ir.ui.view">
+            <field name="name">venue.foods.tree.view</field>
+            <field name="model">venue.foods</field>
             <field name="priority" eval="7"/>
             <field name="arch" type="xml">
-                <tree string="Venue Facilities">
-                    <field name="food"/>
-                    <field name="stage"/>
-                    <field name="chair"/>
-                    <field name="table"/>
+                <tree string="Venue Foods">
+                    <field name="food_name"/>
+                    <field name="packet_qty"/>
                 </tree>
             </field>
         </record>
 
 
         <!-- Form View -->
-        <record id="venue_facilities_form_view" model="ir.ui.view">
-            <field name="name">venue.facilities.form.view</field>
-            <field name="model">venue.facilities</field>
+        <record id="venue_foods_form_view" model="ir.ui.view">
+            <field name="name">venue.foods.form.view</field>
+            <field name="model">venue.foods</field>
             <field name="priority" eval="7"/>
             <field name="arch" type="xml">
-                <form string="Venue Facilities">
+                <form string="Venue Foods">
                     <header>
 
                     </header>
                     <sheet>
                         <group>
-                            <field name="food"/>
-                            <field name="stage"/>
-                            <field name="chair"/>
-                            <field name="table"/>
+                            <field name="food_name"/>
+                            <field name="packet_qty"/>
                         </group>
                     </sheet>
                     <!-- Chatter -->
@@ -84,9 +79,9 @@
         </record>
 
         <!-- actions opening views on models -->
-        <record model="ir.actions.act_window" id="venue_booking.action_venue_facilities">
-            <field name="name">Venue Facilities</field>
-            <field name="res_model">venue.facilities</field>
+        <record model="ir.actions.act_window" id="venue_booking.action_venue_foods">
+            <field name="name">Venue Foods</field>
+            <field name="res_model">venue.foods</field>
             <field name="view_mode">kanban,tree,form</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create o_view_nocontent_smiling_face">Add a new record.</p>

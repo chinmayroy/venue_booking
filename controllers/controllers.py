@@ -2,6 +2,7 @@ from odoo import http
 from odoo.http import request
 import datetime
 
+
 class VenueBooking(http.Controller):
     @http.route('/booking', auth='user', website=True)
     def booking(self):
@@ -15,32 +16,32 @@ class VenueBooking(http.Controller):
         }
         return request.render("venue_booking.booking_template_view", values)
 
-    @http.route('/booking/bill_pay', auth='user', website=True)
-    def bill_pay(self):
-        partner_id = request.env['website.visitor']._get_visitor_from_request().partner_id
-        product_id = request.env['venue.list'].sudo().search(['product_id', '=', product_id])
-        today = datetime.datetime.now()
+    @http.route('/booking/thank_you_message', auth='user', website=True)
+    def thankyou(self, **kw):
+        new_booking = request.env['venue.booked.list'].sudo().create(kw)
 
+        user = http.request.env.user.partner_id.id
+        venue_id = new_booking.venue_name
+        venue_list_id = request.env['venue.list'].sudo().search([('id', '=', venue_id.id)], limit=1)
+
+        today = datetime.datetime.now()
         invoice = request.env['account.move'].create({
-            'move_type': 'in_invoice',
+            'move_type': 'out_invoice',
             'date': '2017-01-01',
-            'partner_id': partner_id,
+            'partner_id': user,
             'invoice_date': today.strftime('%Y-%m-%d'),
             'invoice_line_ids': [
                 (0, None, {
-                    'product_id': product_id,
+                    'product_id': venue_list_id.product_id.id,
                     'quantity': 1,
                     'price_unit': 500,
                 }),
             ]
         })
-        print(product_id)
-        return invoice
-
-    @http.route('/booking/thank_you_message', auth='user', website=True)
-    def thankyou(self, **kw):
-        new_booking = request.env['venue.booked.list'].sudo().create(kw)
+        invoice.action_post()
+        new_booking.create_email_receive_information()
         values = {
             'new_booking': new_booking,
+            'invoice': invoice,
         }
         return request.render("venue_booking.successful_message", values)

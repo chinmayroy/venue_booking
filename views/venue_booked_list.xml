@@ -73,11 +73,11 @@
             <field name="arch" type="xml">
                 <form string="Booked List">
                     <header>
-                        <button id="requirement_button" name="action_requirement" string="Requirement" type="object"
+                        <button id="requirement_button" name="action_pre_approved" string="Pre Approved" type="object"
                                 class="oe_highlight" data-hotkey="r" states="draft"/>
                         <button id="approved_button" name="action_approved" string="Approved" type="object"
-                                class="oe_highlight" data-hotkey="a" states="requirement"/>
-                        <field name="state" widget="statusbar" statusbar_visible="draft,requirement,approved"/>
+                                class="oe_highlight" data-hotkey="a" states="pre_approved"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,pre_approved,approved"/>
                     </header>
                     <sheet>
                         <group>
