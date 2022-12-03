@@ -17,6 +17,9 @@
         <menuitem name="Venue Related" id="venue_booking.venue_related"
                   parent="venue_booking.menu_root"/>
 
+        <menuitem name="Venue Reporting" id="venue_booking.venue_reporting"
+                  parent="venue_booking.menu_root"/>
+
 
         <!-- Sub Menus for Employees -->
         <menuitem name="Employee Information" id="venue_booking.employee_information"
@@ -36,9 +39,10 @@
                   parent="venue_booking.venue_related"
                   action="venue_booking.action_venue_slot_list"/>
 
-<!--        <menuitem name="Facilities" id="venue_booking.facilities"-->
-<!--                  parent="venue_booking.venue_related"-->
-<!--                  action="venue_booking.action_venue_foods"/>-->
+        <!-- Sub Menus for Reporting -->
+        <menuitem name="Venue Booked List" id="venue_booking.venue_booked_list_check"
+                  parent="venue_booking.venue_reporting"
+                  action="venue_booking.action_print_venue_booked_list"/>
 
     </data>
 </odoo>

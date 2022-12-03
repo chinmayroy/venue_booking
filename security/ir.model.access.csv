@@ -6,6 +6,15 @@ access_employee_information,employee.information,model_employee_information,base
 access_venue_booking_team,venue.booking.team,model_venue_booking_team,base.group_user,1,1,1,1
 access_venue_slot_list,venue.slot.list,model_venue_slot_list,base.group_user,1,1,1,1
 access_venue_foods,venue.foods,model_venue_foods,base.group_user,1,1,1,1
+access_venue_booked_list_check,venue.booked.list.check,model_venue_booked_list_check,base.group_user,1,1,1,1
+
+access_venue_booked_list_for_portal,venue.booked.list,model_venue_booked_list,base.group_portal,1,1,1,1
+access_venue_list_for_portal,venue.list,model_venue_list,base.group_portal,1,1,1,1
+access_employee_information_for_portal,employee.information,model_employee_information,base.group_portal,1,1,1,1
+access_venue_booking_team_for_portal,venue.booking.team,model_venue_booking_team,base.group_portal,1,1,1,1
+access_venue_slot_list_for_portal,venue.slot.list,model_venue_slot_list,base.group_portal,1,1,1,1
+access_venue_foods_for_portal,venue.foods,model_venue_foods,base.group_portal,1,1,1,1
+access_venue_booked_list_check_for_portal,venue.booked.list.check,model_venue_booked_list_check,base.group_portal,1,1,1,1
 
 
 access_venue_booked_list_for_user,venue.booked.list,model_venue_booked_list,venue_booking.venue_booking_user,1,0,0,0

@@ -25,7 +25,7 @@ class VenueBooking(http.Controller):
         venue_list_id = request.env['venue.list'].sudo().search([('id', '=', venue_id.id)], limit=1)
 
         today = datetime.datetime.now()
-        invoice = request.env['account.move'].create({
+        invoice = request.env['account.move'].sudo().create({
             'move_type': 'out_invoice',
             'date': '2017-01-01',
             'partner_id': user,

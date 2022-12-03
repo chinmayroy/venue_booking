@@ -1,0 +1,107 @@
+<odoo>
+    <data>
+        <report
+                id="action_venue_booked_wizard_report_view"
+                model="venue.booked.list.check"
+                report_type="qweb-html"
+                string="Venue Booked List Print"
+                name="venue_booking.venue_booked_list_check_wizard_template"
+                file="venue_booking.venue_booked_list_check_wizard_template"
+                paperformat="venue_booking.venue_booked_report_portrait"
+                attachment_use="False"
+        />
+
+
+        <template id="venue_booked_list_check_wizard_template">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+
+                        <div class="oe_structure"/>
+
+
+                        <!-- Report Title -->
+                        <div class="row" style="margin-bottom: 30px !important; text-decoration: underline;">
+                            <div class="col-xs-12 col-md-12">
+                                <h2 class="text-center">Venue Booked List</h2>
+                            </div>
+                        </div>
+
+
+                        <!-- Report Header -->
+                        <table class="table table-condensed">
+                            <tr>
+                                <td class="col-md-2">Customer Name :</td>
+                                <td>
+                                    <t t-foreach="venue_booked_w" t-as="v">
+                                            <span t-esc="v['name']"/>
+                                    </t>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="col-md-2">Date From :</td>
+                                <td>
+                                    <t t-if="form_data.get('date_from')">
+                                        <t t-esc="form_data['date_from']"/>
+                                    </t>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-2">Date To :</td>
+                                <td>
+                                    <t t-if="form_data.get('date_to')">
+                                        <t t-esc="form_data['date_to']"/>
+                                    </t>
+                                </td>
+                            </tr>
+
+                        </table>
+
+
+                        <!-- Report Body -->
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Program</th>
+                                    <th>Venue Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="venue_booked_w" t-as="v">
+                                    <tr>
+                                        <td>
+                                            <span t-esc="v['email']"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="v['phone']"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="v['program']"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="v['venue_name']"/>
+                                        </td>
+                                    </tr>
+                                </t>
+
+                            </tbody>
+                        </table>
+                        <div class="row col-xs-12 col-md-12" style="margin-top: 150px !important; font-size: 20px;">
+                            <div class="text-center col-md-6" style="display:inline-block;">----------------</div>
+                            <div class="text-center col-md-6" style="display:inline-block;">-----------------</div>
+                            <br/>
+                            <div class="text-center col-md-6" style="display:inline-block;">Authorized Signutre</div>
+                            <div class="text-center col-md-6" style="display:inline-block;">CEO Signutre</div>
+                        </div>
+
+                        <div class="oe_structure"/>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

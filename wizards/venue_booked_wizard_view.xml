@@ -1,0 +1,36 @@
+<odoo>
+    <data>
+        <!-- Form View -->
+        <record id="venue_booked_list_check_form_view" model="ir.ui.view">
+            <field name="name">venue.booked.list.check.form.view</field>
+            <field name="model">venue.booked.list.check</field>
+            <field name="arch" type="xml">
+                <form string="Venue Booked Wizard View">
+                    <group>
+                        <group>
+                            <field name="customer_name"/>
+                        </group>
+                        <group>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Print" name="action_print_venue_booked_list" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action View -->
+        <record id="action_print_venue_booked_list" model="ir.actions.act_window">
+            <field name="name">Venue Booked List</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">venue.booked.list.check</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>
