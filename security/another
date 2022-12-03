@@ -1,0 +1,8 @@
+access_account_journal,account.journal,account.model_account_journal,venue_booking.venue_booking_user,1,1,1,0
+access_account_account,account.account,account.model_account_account,venue_booking.venue_booking_user,1,1,1,0
+access_account_account_type,account.account.type,account.model_account_account_type,venue_booking.venue_booking_user,1,1,1,0
+access_account_move,account.move,account.model_account_move,venue_booking.venue_booking_user,1,1,1,0
+access_account_move_line,account.move.line,account.model_account_move_line,venue_booking.venue_booking_user,1,1,1,0
+access_product_product,product.product,product.model_product_product,venue_booking.venue_booking_user,1,1,1,0
+access_product_template,product.template,product.model_product_template,venue_booking.venue_booking_user,1,1,1,0
+access_product_supplierinfo,product.supplierinfo,product.model_product_supplierinfo,venue_booking.venue_booking_user,1,1,1,0
