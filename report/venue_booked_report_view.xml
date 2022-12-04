@@ -87,6 +87,22 @@
                             </tbody>
                         </table>
 
+
+                        <table class="table table-condensed col-md-12"
+                               style="margin-top: 150px !important; border: 0px;">
+                            <td>
+                                <div class="text-center col-md-12" style="display:inline-block;">----------------------</div>
+                                <br/>
+                                <div class="text-center col-md-12" style="display:inline-block;">Asst. Manager Signature</div>
+                            </td>
+
+                            <td>
+                                <div class="text-center col-md-12" style="display:inline-block;">----------------------</div>
+                                <br/>
+                                <div class="text-center col-md-12" style="display:inline-block;">Manager Signature</div>
+                            </td>
+                        </table>
+
                         <div class="oe_structure"/>
 
                     </div>
