@@ -8,6 +8,9 @@
                 <form string="Venue Booked Wizard View">
                     <group>
                         <group>
+                            <field name="search_venue_name"/>
+                        </group>
+                        <group>
                             <field name="date_from"/>
                             <field name="date_to"/>
                         </group>
@@ -21,7 +24,7 @@
         </record>
 
         <!-- Action View -->
-        <record id="action_print_venue_booked_list" model="ir.actions.act_window">
+        <record id="action_venue_booked_list_wizards_form_view" model="ir.actions.act_window">
             <field name="name">Venue Booked List</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">venue.booked.list.check</field>

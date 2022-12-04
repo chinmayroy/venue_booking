@@ -31,7 +31,15 @@
                         <!-- Report Header -->
                         <table class="table table-condensed">
                             <tr>
-                                <td class="col-md-2">Date From :</td>
+                                <td class="col-md-2">Venue Name:</td>
+                                <td>
+                                    <t t-if="form_data.get('search_venue_name')">
+                                        <t t-esc="form_data['search_venue_name']"/>
+                                    </t>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-2">Date From:</td>
                                 <td>
                                     <t t-if="form_data.get('date_from')">
                                         <t t-esc="form_data['date_from']"/>
@@ -39,7 +47,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="col-md-2">Date To :</td>
+                                <td class="col-md-2">Date To:</td>
                                 <td>
                                     <t t-if="form_data.get('date_to')">
                                         <t t-esc="form_data['date_to']"/>
@@ -60,6 +68,8 @@
                                     <th>Program</th>
                                     <th>Venue Name</th>
                                     <th>Slot</th>
+                                    <th>Create Date</th>
+                                    <th>Approved Date</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -82,6 +92,12 @@
                                         </td>
                                         <td>
                                             <span t-esc="v['slot']"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="v['create_date']"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="v['write_date']"/>
                                         </td>
                                     </tr>
                                 </t>
