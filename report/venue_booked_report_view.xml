@@ -50,7 +50,7 @@
                         <!-- Report Body -->
                         <table class="table table-condensed">
                             <thead>
-                                <tr>
+                                <tr class="text-center">
                                     <th>Program Name</th>
                                     <th>Venue Name</th>
                                     <th>Slot</th>
@@ -74,7 +74,7 @@
                         <!-- Another Table For More Details-->
                         <table class="table table-condensed">
                             <thead>
-                                <tr class="text-center col-xs-12 col-md-12">
+                                <tr class="text-center">
                                     <th>More Details</th>
                                 </tr>
                             </thead>
