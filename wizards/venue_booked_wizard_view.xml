@@ -8,9 +8,6 @@
                 <form string="Venue Booked Wizard View">
                     <group>
                         <group>
-                            <field name="customer_name"/>
-                        </group>
-                        <group>
                             <field name="date_from"/>
                             <field name="date_to"/>
                         </group>

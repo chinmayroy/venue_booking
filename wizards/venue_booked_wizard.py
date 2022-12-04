@@ -21,6 +21,7 @@ class VenueBookedListCheck(models.TransientModel):
                 'phone': v.phone,
                 'program': v.program,
                 'venue_name': v.venue_name.name,
+                'slot': v.slot.name,
             }
             datalist.append(values)
         data = {

@@ -31,15 +31,6 @@
                         <!-- Report Header -->
                         <table class="table table-condensed">
                             <tr>
-                                <td class="col-md-2">Customer Name :</td>
-                                <td>
-                                    <t t-foreach="venue_booked_w" t-as="v">
-                                            <span t-esc="v['name']"/>
-                                    </t>
-                                </td>
-                            </tr>
-
-                            <tr>
                                 <td class="col-md-2">Date From :</td>
                                 <td>
                                     <t t-if="form_data.get('date_from')">
@@ -63,15 +54,20 @@
                         <table class="table table-condensed">
                             <thead>
                                 <tr>
+                                    <th>Customer Name</th>
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>Program</th>
                                     <th>Venue Name</th>
+                                    <th>Slot</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <t t-foreach="venue_booked_w" t-as="v">
                                     <tr>
+                                        <td>
+                                            <span t-esc="v['name']"/>
+                                        </td>
                                         <td>
                                             <span t-esc="v['email']"/>
                                         </td>
@@ -83,6 +79,9 @@
                                         </td>
                                         <td>
                                             <span t-esc="v['venue_name']"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="v['slot']"/>
                                         </td>
                                     </tr>
                                 </t>

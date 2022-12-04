@@ -30,8 +30,8 @@
         'data/venue_list_sequence.xml',
 
         'report/venue_booked_report_format.xml',
-        'report/venue_booked_wizard_report_view.xml',
         'report/venue_booked_report_view.xml',
+        'report/venue_booked_wizard_report_view.xml',
 
         'views/venue_booked_list.xml',
         'views/employee_information.xml',
